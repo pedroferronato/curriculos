@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block conteudo %}
+
+<h1>Cursos</h1>
+
+<table class="table">
+
+    <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Instituicao</th>
+        <th>Editar</th>
+        <th>Excluir</th>
+    </tr>
+    
+    {% for l in lista %}
+    
+    <tr>
+        <td>{{ l.id }}</td>
+        <td>{{ l.nome }}</td>
+        <td>{{ l.instituicao_id }}</td>
+        <td><a href="/cursos/editar/{{ l.id }}" class="btn btn-warning">Alterar</a></td>
+        <td><a href="/cursos/deletar/{{ l.id }}" class="btn btn-danger">Excluir</a></td>
+    </tr>
+    
+    {% endfor %}
+
+</table>
+
+{% endblock %}

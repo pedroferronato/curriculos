@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block conteudo %}
+
+<h1>Formação complementar</h1>
+
+<table class="table">
+
+    <tr>
+        <th>ID</th>
+        <th>Instituição</th>
+        <th>Usuario</th>
+        <th>Descrição</th>
+        <th>Início</th>
+        <th>Término</th>
+        <th>Editar</th>
+        <th>Excluir</th>
+    </tr>
+    
+    {% for l in lista %}
+    
+    <tr>
+        <td>{{ l.id }}</td>
+        <td>{{ l.instituicao_id }}</td>
+        <td>{{ l.usuario_id }}</td>
+        <td>{{ l.descricao }}</td>
+        <td>{{ l.inicio }}</td>
+        <td>
+        {% if l.termino %}
+
+            {{ l.termino }}
+
+        {% else %}
+
+            -
+
+        {% endif %}
+        </td>
+        <td><a href="/complementar/editar/{{ l.id }}" class="btn btn-warning">Alterar</a></td>
+        <td><a href="/complementar/deletar/{{ l.id }}" class="btn btn-danger">Excluir</a></td>
+    </tr>
+    
+    {% endfor %}
+
+</table>
+
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block conteudo %}
+
+<h1>Formação acadêmica</h1>
+
+<table class="table">
+
+    <tr>
+        <th>ID</th>
+        <th>Curso</th>
+        <th>Usuario</th>
+        <th>Trabalho de conclusão</th>
+        <th>Início</th>
+        <th>Término</th>
+        <th>Editar</th>
+        <th>Excluir</th>
+    </tr>
+    
+    {% for l in lista %}
+    
+    <tr>
+        <td>{{ l.id }}</td>
+        <td>{{ l.curso_id }}</td>
+        <td>{{ l.usuario_id }}</td>
+        <td>{{ l.trabalho_conclusao }}</td>
+        <td>{{ l.inicio }}</td>
+        <td>
+        {% if l.termino %}
+
+            {{ l.termino }}
+
+        {% else %}
+
+            -
+
+        {% endif %}
+        </td>
+        <td><a href="/academica/editar/{{ l.id }}" class="btn btn-warning">Alterar</a></td>
+        <td><a href="/academica/deletar/{{ l.id }}" class="btn btn-danger">Excluir</a></td>
+    </tr>
+    
+    {% endfor %}
+
+</table>
+
+{% endblock %}

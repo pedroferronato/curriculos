@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block conteudo %}
+
+<h1>Instituições</h1>
+
+<table class="table">
+
+    <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Sigla</th>
+        <th>Editar</th>
+        <th>Excluir</th>
+    </tr>
+    
+    {% for l in lista %}
+    
+    <tr>
+        <td>{{ l.id }}</td>
+        <td>{{ l.nome }}</td>
+        <td>
+        {% if l.sigla %}
+
+            {{ l.sigla }}
+
+        {% else %}
+
+            -
+
+        {% endif %}
+        </td>
+        <td><a href="/instituicao/editar/{{ l.id }}" class="btn btn-warning">Alterar</a></td>
+        <td><a href="/instituicao/deletar/{{ l.id }}" class="btn btn-danger">Excluir</a></td>
+    </tr>
+    
+    {% endfor %}
+
+</table>
+
+{% endblock %}
