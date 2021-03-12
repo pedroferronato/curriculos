@@ -8,7 +8,10 @@ class Usuario(db.Model):
     email = db.Column(db.String(200), index=True, unique=True)
     senha = db.Column(db.String(200))
     admin = db.Column(db.Boolean())
-
+    academica = db.relationship('FormacaoAcademica', backref='usuario')
+    complementar = db.relationship('FormacaoComplementar', backref='usuario')
+    atuacao = db.relationship('AtuacaoProfissional', backref='usuario')
+    
     def __repr__(self):
         return '<Usuario %s>' % self.nome
 
@@ -19,6 +22,9 @@ class Instituicao(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     nome = db.Column(db.String(200), nullable=False)
     sigla = db.Column(db.String(20))
+    cursos = db.relationship('Curso', backref='instituicao')
+    complementar = db.relationship('FormacaoComplementar', backref='instituicao')
+    atuacao = db.relationship('AtuacaoProfissional', backref='instituicao')
 
     def __repr__(self):
         return '<Instituição %s>' % self.nome
@@ -30,6 +36,7 @@ class Curso(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     nome = db.Column(db.String(200), nullable=False)
     instituicao_id = db.Column(db.Integer, db.ForeignKey('instituicoes.id'), nullable=False)
+    academica = db.relationship('FormacaoAcademica', backref='curso')
 
     def __repr__(self):
         return '<Curso %s>' % self.nome
@@ -71,6 +78,7 @@ class AtuacaoProfissional(db.Model):
     instituicao_id = db.Column(db.Integer, db.ForeignKey('instituicoes.id'), nullable=False)
     inicio = db.Column(db.Date(), nullable=False)
     termino = db.Column(db.Date())
+    atividade = db.relationship('AtividadeProfissional', backref='atuacao')
     
     def __repr__(self):
         return '<Atuação Profissional %s>' % self.instituicao_id

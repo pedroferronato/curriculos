@@ -19,8 +19,8 @@
     
     <tr>
         <td>{{ l.id }}</td>
-        <td>{{ l.usuario_id }}</td>
-        <td>{{ l.instituicao_id }}</td>
+        <td>{{ l.usuario.nome}}</td>
+        <td>{{ l.instituicao.nome }}</td>
         <td>{{ l.inicio }}</td>
         <td>
         {% if l.termino %}
