@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,19 +8,37 @@
     <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
     <title>Currículos</title>
 </head>
+
 <body>
 
     <header class="bg-primary">
         <h1 class="container text-light pt-3 pb-2">Plataforma de Currículos</h1>
+        <nav class="navbar navbar-expand-lg navbar-light bg-info">
+            <div class="container">
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav ">
+                        <a class="nav-item nav-link active text-light font-weight-bold" href="/usuarios">Usuários</a>
+                        <a class="nav-item nav-link active text-light font-weight-bold" href="/cursos">Cursos</a>
+                        <a class="nav-item nav-link active text-light font-weight-bold" href="/instituicoes">Instituições</a>
+                        <a class="nav-item nav-link active text-light font-weight-bold" href="/academicas">Acadêmicas</a>
+                        <a class="nav-item nav-link active text-light font-weight-bold" href="/complementares">Complementares</a>
+                        <a class="nav-item nav-link active text-light font-weight-bold" href="/atuacoes">Atuações</a>
+                        <a class="nav-item nav-link active text-light font-weight-bold" href="/atividades">Atividades</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
     </header>
+
 
     <main class="container pt-3">
 
         {% block conteudo %}
-        
+
         {% endblock %}
-        
+
     </main>
 
 </body>
+
 </html>
